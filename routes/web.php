@@ -22,4 +22,4 @@ Route::get('api/game/{id}', [GameController::class, 'show']);
 Route::put('api/game/update/{id}',[GameController::class,'update']);
 Route::post('api/game',[GameController::class,'store']);
 Route::delete('api/game/{id}',[GameController::class,'delete']);
-Route::get('search', [GameController::class, 'autocomplete']);
+Route::get('api/game/search/{name}', [GameController::class, 'autocomplete']);

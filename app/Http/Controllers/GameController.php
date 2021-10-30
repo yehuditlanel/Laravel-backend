@@ -48,12 +48,14 @@ class GameController extends Controller
         Game::where('id', $id)->delete();
         return ['status' => 'success'];
     }
-    public function autocomplete(Request $request)
+    public function autocomplete($name)
     {
-        $data = Game::select("name")
-                ->where("name","LIKE","%{$request->input('query')}%")
+        if($name=="null"||$name==''){
+           return Game::get(); 
+        }
+        $data = Game::where("name","LIKE","%{$name}%")
                 ->get();
    
-        return response()->json($data);
+        return $data;
     }
 }
